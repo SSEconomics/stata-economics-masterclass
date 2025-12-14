@@ -1,62 +1,76 @@
-# stata-economics-masterclass
-A complete guide to time-series analysis, debugging, and publication-quality graphing in Stata
+# Stata Economics Masterclass
 
-# Stata for Economists: From Zero to Hero 📈
+[![YouTube Channel](https://img.shields.io/badge/YouTube-Subscribe-red?style=for-the-badge&logo=youtube)](https://youtube.com/@ssnudden)
+[![Stata Version](https://img.shields.io/badge/Stata-15%2B-blue?style=for-the-badge)](https://www.stata.com/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-Welcome to the **Stata Masterclass**. This repository contains all the code and data files needed to follow along with the [YouTube Series](YOUR_PLAYLIST_LINK_HERE). 
+**This is the introduction to Stata I wish I had.**
 
-By the end of this course, you will be able to take messy raw data, clean it, transform it, analyze it, and produce publication-quality graphs and tables.
+Suitable for all levels, this course is designed to make you a **better economist**. The goal is simple: improve your efficiency, save you hours of headaches, and eliminate errors through automation. 
 
-## 📺 Video Course Index
-
-| Part | Topic | Video Link | Key Concepts |
-| :--- | :--- | :--- | :--- |
-| **0** | **Prerequisite: Getting Data** | [Watch Here](https://youtu.be/YtObmeC5rYw) | *Automating data downloads from StatCan (Optional)* |
-| **1** | **Setup & Wrangling** | [Coming Soon] | *`import delimited`, `tsset`, `collapse`, Frequency conversion* |
-| **2** | **Debugging Like a Pro** | [Coming Soon] | *Common errors, `replace` logic, fixing broken code* |
-| **3** | **Generating Variables** | [Coming Soon] | *Growth rates, Logs, Lags, Economic Identities* |
-| **4** | **Economic Analysis** | [Coming Soon] | *`summarize`, `pwcorr`, Lead/Lag analysis, Volatility* |
-| **5** | **Perfect Visualizations** | [Coming Soon] | *`tsline`, formatting axes, recession shading, exporting* |
+These scripts provide the hacks and workflows necessary to move from "manual" analysis to **replicable, professional code**.
 
 ---
 
-## 🎓 For University Students (The Assignment)
-If you are taking my Macroeconomics course, follow these steps to get started:
+## 📺 The Video Series (Watch & Code Along)
 
-1.  **Download the Materials:**
-    * Go to the **[Releases](../../releases)** page on the right sidebar.
-    * Download the `Student_Materials.zip` file.
-    * *Do not just download individual files—the zip ensures folders are set up correctly.*
-2.  **Unzip the Folder:**
-    * Right-click the zip file and select **"Extract All"**. 
-    * **Important:** Do not try to open the Stata files while they are still inside the zip.
-3.  **Start Coding:**
-    * Open `code/01_setup_import.do` in Stata.
-    * Follow the instructions in **Video 1**.
+| Video Title | Skill Learned | Script |
+| :--- | :--- | :--- |
+| **1. Automate Your Import** (Video Coming Soon) | Reproducible data cleaning | `01_Clean_Data_Automated.do` |
+| **2. Debug Like a Pro** (Video Coming Soon) | Fixing common coding errors | `02_Debug_Like_A_Pro.do` |
+| **3. Stop Using Excel** (Video Coming Soon) | Professional analysis & visualization | `03_Stop_Using_Excel.do` |
+| **4. The Spurious Trap** (Video Coming Soon) | Monte Carlo Simulations | `04_Spurious_Regression_Trap.do` |
+| **5. The Copy-Paste Intervention** (Video Coming Soon) | Exporting Results to Word/Excel/LaTeX | `05_Copy_Paste_Intervention.do` |
+---
+
+## 🚀 Quick Start
+
+1.  **Download** this repository (green "Code" button > Download ZIP).
+2.  **Unzip** the folder. Keep all files in the same directory.
+3.  **Open** any `.do` file. 
+    * *Tip:* Open the file directly from the folder to set your working directory automatically.
 
 ---
 
-## 🌍 For YouTube Learners
-If you found this via YouTube, you can clone this repo to follow along.
+## 🇨🇦 Data Source
+The datasets used in this course (`CDataQ.csv`, `CDataM.csv`) are real Canadian macroeconomic data.
 
-**Prerequisites:**
-* Stata (Version 14 or higher recommended)
-* No prior experience required (We start from scratch!)
-
-**The Data:**
-The raw data (`.csv` files) in the `data/` folder comes from Statistics Canada (National Accounts & Labour Force Survey). While we focus on Canadian data, the techniques (cleaning, merging, time-series operators) apply to **any economic dataset** (FRED, World Bank, etc.).
+**Want to learn how to fetch this data yourself?**
+I have a separate guide on how to build this exact dataset from scratch using official Statistics Canada sources.
+* **[Watch the Video: StatsCan Economic Data Guide](https://youtu.be/YtObmeC5rYw)**
+* **[Get the Data Guide & Raw Files](https://github.com/SSEconomics/statscan-econ-data-guide)**
 
 ---
 
-## 📂 Repository Structure
+## 🏆 The "Better Economist" Standard
 
-* `code/`: Contains the do-files corresponding to each video lesson.
-    * *Note: `02_debug_practice.do` contains intentional errors for learning purposes.*
-* `data/`: Contains the raw CSV files needed to start the project.
+The best economists **know their data**. 
 
-## 👨‍🏫 About the Author
-**Stephen Snudden, PhD** * [YouTube Channel](https://youtube.com/@ssnudden)
-* [Academic Website](https://stephensnudden.com/)
-* [GitHub Profile](https://github.com/SSEconomics)
+You should care deeply about the quality of your figures and tables. In this course, we adhere to the **Stand-Alone Principle**: A stranger should be able to pick up your graph or table and understand it perfectly without reading your text.
 
-*Disclaimer: This material is for educational purposes. If you use this code for research, please verify all transformations.*
+### 1. Code Hygiene
+* **Clean Scripts:** Files include only the commands used and descriptions. 
+* **No Raw Output:** Never show raw Stata output in a report. Everything must be summarized in words or formatted into a suitable table.
+
+### 2. General Presentation Rules
+* **Notes are Mandatory:** Must describe the data source, date range, transformations, and seasonal adjustments.
+* **Titles:** It is best to handle titles and notes in LaTeX.
+* **Real Names:** Always use the actual name of the series (e.g., "Real GDP Growth"), never the Stata syntax code (e.g., `dy_var`).
+
+### 3. Guidelines for Figures
+* **Axis Labels:** Use units only (e.g., "Percent", "Billions of Dollars").
+* **Legends:** Label the series clearly without syntax.
+* **No Borders:** Remove borders around legends and figures. 
+* **Stationarity:** Graph what you are modelling. Non-stationary data only if showing trends.
+* **Visuals:** No "Stata Blue" backgrounds. Format figures to look like they belong in a journal.
+
+### 4. Guidelines for Tables
+* **Relevance:** Only describe stationary data. Do not show variables that were not asked for.
+* **Precision:** No more than **two significant digits** (e.g., `0.75`, not `0.75165`).
+
+---
+
+## 👤 Author
+**Stephen Snudden, PhD**
+* [YouTube Channel](https://youtube.com/@ssnudden)
+* [Personal Website](https://stephensnudden.com/)

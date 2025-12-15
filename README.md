@@ -16,7 +16,7 @@ These scripts provide the hacks and workflows necessary to move from "manual" an
 
 | Video Title | Skill Learned | Script |
 | :--- | :--- | :--- |
-| **1. Automate Your Import** (Video Coming Soon) | Reproducible data cleaning | `01_Clean_Data_Automated.do` |
+| **1. Automate Your Import** ([Watch Here](https://youtu.be/5n0i6cCQZqo)) | Reproducible data cleaning | `01_Clean_Data_Automated.do` |
 | **2. Debug Like a Pro** (Video Coming Soon) | Fixing common coding errors | `02_Debug_Like_A_Pro.do` |
 | **3. Stop Using Excel** (Video Coming Soon) | Professional analysis & visualization | `03_Stop_Using_Excel.do` |
 | **4. The Spurious Trap** (Video Coming Soon) | Monte Carlo Simulations | `04_Spurious_Regression_Trap.do` |
@@ -39,6 +39,16 @@ The datasets used in this course (`CDataQ.csv`, `CDataM.csv`) are real Canadian 
 I have a separate guide on how to build this exact dataset from scratch using official Statistics Canada sources.
 * **[Watch the Video: StatsCan Economic Data Guide](https://youtu.be/YtObmeC5rYw)**
 * **[Get the Data Guide & Raw Files](https://github.com/SSEconomics/statscan-econ-data-guide)**
+
+---
+
+## 🐛 The Golden Rules of Debugging
+
+When your code crashes (and it will), do not panic. Follow this 3-step workflow from **Video 2** before trying to fix it:
+
+1.  **Read the Error:** The Output window is your friend. Read the red text to understand *why* it failed and find *where* the error happened. Click the blue error code (e.g., `r(109)`).
+2.  **Find out where the error occurred:** Don't guess. Look at the line number. Run the code line by line to find the specific command that caused the stop.
+3.  **Check the output after each command:** Code can run without crashing and still be wrong. 
 
 ---
 

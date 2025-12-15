@@ -69,7 +69,7 @@ collapse (mean) `vars_to_collapse', by(time)
 // Option (c): Quarterly Sums (Best for Flows like Sales or GDP)
 // collapse (sum) `vars_to_collapse', by(time)
 // Save the clean temporary dataset
-save "DataM_Clean.dta", replace
+save "DataM.dta", replace
 
 // ***************************
 // 4. Process Quarterly Data (National Accounts)
@@ -89,7 +89,7 @@ save "DataQ.dta", replace
 // 5. Merge and Final Polish
 // ***************************
 
-merge 1:m time using "DataM.dta", nogenerate
+merge 1:1 time using "DataM.dta", nogenerate
 tsset time // Re-declare time series after merge
 
 // ***************************

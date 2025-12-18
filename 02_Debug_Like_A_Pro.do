@@ -9,7 +9,7 @@
 
 // INSTRUCTIONS:
 // This code is PURPOSELY BROKEN. 
-// It contains the 6 most common errors students make.
+// It contains the 5 most common errors students make.
 // Your goal: Run the code, find the error, fix it, and run again.
 
 // ***************************
@@ -21,102 +21,115 @@ set more off
 log using "output_02.log", replace
 
 // ***************************
-// SLIDE 1: THE RED TEXT ERROR (r109)
+// PART 1: THE PATH ERROR (r601)
+// ERROR: "not found"
+// ***************************
+
+// ERROR #1a: Did you unzip the file?
+
+// ERROR #1b: Did you double click the file to open Stata (correct working directory)? 
+pwd // print working directory
+
+// ERROR #1c: Are you using an incorrect path?
+import delimited "Data/CDataM.csv", clear  // FIX: Remove "Data/" to locate the current folder.
+
+// Other common path failure examples
+// graph export "Figures/growth_graph.png", replace  
+// log using "Output/output_02.log", replace
+
+// ERROR #1d: Use "\" only works on Windows; "/" works on Mac and Linux  
+// BAD: import delimited "Data\CDataM.csv", clear
+// GOOD: import delimited "Data/CDataM.csv", clear
+
+// ***************************
+// PART 2: THE RED TEXT ERROR (r4)
+// ERROR: "no; data in memory would be lost"
+// ***************************
+
+// ERROR #2: Uploading data when some already exists
+import delimited "CDataM_broken.csv"   // FIX: use the ", clear" option
+
+// ***************************
+// PART 3: THE RED TEXT ERROR (r109)
+// ERROR: "type mismatch"
+// ERROR: "string variable ... not allowed" 
 // ***************************
 
 // Import the "Broken" Monthly Data
-// ERROR: Look at the Data Browser. 'unemp' is RED (String).
 import delimited "CDataM_broken.csv", clear
-
-// FIX: Handle the "N/A" text
-// Alternative (The Hammer): Force all non-numeric text to missing automatically
-// (Uncomment the line below to fix the r109 error later)
-destring unemp, replace force
-
-// Generate Dates
+// Set time
 generate month = tm(1961m1) + _n - 1 
 format %tm month
 tsset month
 
-// We need to collapse to quarterly.
+// FIX: Handle the "N/A" text by cleaning up the CSV
+// Better Fix: Ignore specific non-numeric characters
+*destring unemp, replace ignore("N/A")
+
+// ERROR #3a: Look at the Data Browser. 'unemp' is RED (String).
+describe unemp emp
+gen laborforce=unemp+emp
+
+// Collapse to quarterly
 gen time = qofd(dofm(month))
 format time %tq
-
-// ERROR #1: If 'unemp' is still a string (red) because you didn't fix it above,
-// the command below will crash with r(109) Type Mismatch.
+// ERROR #3b: If 'unemp' is still a string (red) because you didn't fix it above
 ds month time year m, not
 collapse (mean) `r(varlist)', by(time)
-
 save "DataM.dta", replace
 
 // ***************************
-// SLIDE 2: THE SILENT TIME SHIFTER (Logic)
+// PART 4: THE GHOST VARIABLE (r111)
+// ERROR: "variable ... not found"
+// ERROR: "time variable not set"
 // ***************************
 
-// Import Quarterly Data
-clear
-import delimited "CDataQ.csv"
-drop year
-
-// ERROR #2: Check the Source! 
-// The data starts in 1961. The code below says 1971.
-// This shifts all GDP data by 10 years. Stata won't give an error.
-// FIX: Change 1971 to 1961.
-generate time = tq(1971q1) + _n - 1 
-format %tq time
-
-save "DataQ.dta", replace
-merge 1:1 time using "DataM.dta", nogenerate
-
-// VALIDATION STEP: 
-// Look at the Output window. If dates are wrong, you see many "not matched".
-
-// ***************************
-// SLIDE 3: THE TIME TRAVEL ERROR (r198)
-// ***************************
-
-// ERROR #3: "Time-series operators not allowed"
-// We merged the data, but Stata forgot 'time' is the date variable.
-// FIX: Uncomment the line below.
-*tsset time
-gen gy4 = 100 * (y / L4.y - 1)
-label variable gy4 "Real GDP Growth"
-
-// VALIDATION STEP (Visual): 
-// This graph proves Error #2 (The Time Shifter). 
-// The recession should be in 1982, not 1992.
-tsline gy4, title("The Wrong Timeline") name(bad_graph, replace)
-
-// ***************************
-// SLIDE 4: THE GHOST VARIABLE (r111)
-// ***************************
-
-// Textbook Real GDP
-gen c = c_hh + c_np
-
-// ERROR #4: "Variable not found"
-// We called it 'emp' in the CSV. Here we call it 'empo'. 
+// ERROR #4a: Here we call it 'EMP' instead of 'emp'. 
 // Stata is case-sensitive and spelling-sensitive.
-gen lemp = ln(empo) 
+gen lemp = ln(EMP) 
+
+// We collapse to quarterly, but Stata forgot 'time' is the date variable.
+*tsset time
+gen lag_cpi=L.cpi
 
 // ***************************
-// SLIDE 5: THE SILENT KILLER (Destruction)
+// PART 5: THE SILENT KILLER (Logic)
 // ***************************
 
-// ERROR #5: The Silent Wipe
-// This line runs successfully (no red text).
-// But look at your data browser. 'gy4' is now entirely empty dots (.).
-// FIX: Delete this line!
-replace gy4 = . 
+// ERROR #5: The data starts in 1961. The code below says 1971.
+// Stata won't give an error (Red Text), but your graph will be wrong.
+import delimited "CDataQ.csv", clear
+
+generate time = tq(1971q1) + _n - 1 // FIX: Check the Source! Change 1971 to 1961.
+format %tq time
+tsset time
+
+// VALIDATION: Look at Output! If something doesn't seem right - "it's your mistake".
+tsline y, title("The Wrong Timeline") 
 
 // ***************************
-// SLIDE 6: THE PATH ERROR (r601)
+// PART 6: THE INVALID SYNTAX (r198)
+// ERROR: "invalid syntax"
 // ***************************
 
-// ERROR #6: "Directory not found"
-// Stata cannot save into a folder that doesn't exist.
-// FIX: Remove "Figures\" to save in the current folder.
-graph export "Figures\growth_graph.png", replace 
+// ERROR #6: Locals must be run in the SAME execution block as the command using them.
+
+// INSTRUCTION TO BREAK IT: 
+// 1. Highlight and run just the "import" and "local" lines below.
+// 2. Then, highlight and run just the "generate" line. 
+// 3. Observe the "invalid syntax" error.
+import delimited "CDataQ.csv", clear
+local yy = year[1]
+local qq = q[1]
+
+// WHY IT FAILS: 
+// Locals are temporary. If you run them separately, they die before this line sees them.
+// The "Ghost Typist" tries to type `yy' but finds nothing, so it types: tq(q) -> Error!
+
+// FIX: Run everything from "local" to "generate" in ONE GO.
+generate time = tq(`yy'q`qq') + _n - 1 
+format %tq time
+tsset time
 
 // ***************************
 // End

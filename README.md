@@ -17,7 +17,7 @@ These scripts provide the hacks and workflows necessary to move from "manual" an
 | Video Title | Skill Learned | Script |
 | :--- | :--- | :--- |
 | **1. Automated Import, Convert, Combine** ([Watch Here](https://youtu.be/5n0i6cCQZqo)) | Reproducible data loading | `01_Clean_Data_Automated.do` |
-| **2. Debug Like a Pro** (Video Coming Soon) | Problem solving common coding errors | `02_Debug_Like_A_Pro.do` |
+| **2. Debug Like a Pro** ([Watch Here](https://youtu.be/HCt52F8ESf4)) | Problem solving common coding errors | `02_Debug_Like_A_Pro.do` |
 | **3. Stop Using Excel** (Video Coming Soon) | Professional analysis & visualization | `03_Stop_Using_Excel.do` |
 | **4. The Spurious Trap** (Video Coming Soon) | Monte Carlo Simulations | `04_Spurious_Regression_Trap.do` |
 | **5. The Copy-Paste Intervention** (Video Coming Soon) | Exporting Results to Word/Excel/LaTeX | `05_Copy_Paste_Intervention.do` |

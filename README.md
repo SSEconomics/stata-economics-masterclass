@@ -76,7 +76,7 @@ You should care deeply about the quality of your figures and tables. In this cou
 
 ### 4. Guidelines for Tables
 * **Relevance:** Only describe stationary data. Do not show variables that were not asked for.
-* **Precision:** No more than **two significant digits** (e.g., `0.75`, not `0.75165`).
+* **Precision:** No more than **three significant digits** (e.g., `0.752`, not `0.75165`).
 
 ---
 

@@ -18,8 +18,8 @@ These scripts provide the hacks and workflows necessary to move from "manual" an
 | :--- | :--- | :--- |
 | **1. Automated Import, Convert, Combine** ([Watch Here](https://youtu.be/5n0i6cCQZqo)) | Reproducible data loading | `01_Clean_Data_Automated.do` |
 | **2. Debug Like a Pro** ([Watch Here](https://youtu.be/HCt52F8ESf4)) | Problem solving common coding errors | `02_Debug_Like_A_Pro.do` |
-| **3. 5 Essential Time Series Skills** ([Watch Here](https://youtu.be/dz9ad1nOjGM)) | Visualize, Model, Forecast | `03_Essential_Data_Skills.do` |
-| **4. The Spurious Trap** (Video Coming Soon) | Monte Carlo Simulations | `04_Spurious_Regression_Trap.do` |
+| **3. 5 Essential Time Series Skills** ([Watch Here](https://youtu.be/dz9ad1nOjGM)) | Visualize, Model, Forecast | `03_Essential_TS_Skills.do` |
+| **4. Monte Carlo Simulations** (Video Coming Soon) | Simulations, Extracting p-values (Output) | `04_Monte_Carlo_Simulations.do` |
 | **5. The Copy-Paste Intervention** (Video Coming Soon) | Exporting Results to Word/Excel/LaTeX | `05_Copy_Paste_Intervention.do` |
 ---
 

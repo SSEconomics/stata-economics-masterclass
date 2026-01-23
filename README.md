@@ -8,7 +8,9 @@
 
 Suitable for all levels, this course is designed to make you a **better economist**. The goal is simple: improve your efficiency, save you hours of headaches, and eliminate errors through automation. Business students use Excel - economists use software (R/Stata/Python).
 
-These scripts provide the hacks and workflows necessary to move from "manual" analysis to **replicable, professional code**.
+These scripts provide the hacks necessary to move from "manual" analysis to **replicable, professional code**.
+
+While **vibecoding with LLMs** is great, it’s prone to errors and hallucinations. These repositories provide **verified, working code** you need to provide necessary context to the AI. Use these templates to ground your LLM, ask it how to add specific features, and explain the logic—ensuring you reduce errors and get to the right result faster.
 
 ---
 
@@ -17,10 +19,11 @@ These scripts provide the hacks and workflows necessary to move from "manual" an
 | Video Title | Skill Learned | Script |
 | :--- | :--- | :--- |
 | **1. Automated Import, Convert, Combine** ([Watch Here](https://youtu.be/5n0i6cCQZqo)) | Reproducible data loading | `01_Clean_Data_Automated.do` |
-| **2. Debug Like a Pro** ([Watch Here](https://youtu.be/HCt52F8ESf4)) | Problem solving common coding errors | `02_Debug_Like_A_Pro.do` |
+| **2. Debug Like a Pro** ([Watch Here](https://youtu.be/HCt52F8ESf4)) | Solve 95+% of coding errors | `02_Debug_Like_A_Pro.do` |
 | **3. 5 Essential Time Series Skills** ([Watch Here](https://youtu.be/dz9ad1nOjGM)) | Visualize, Model, Forecast | `03_Essential_TS_Skills.do` |
 | **4. Monte Carlo Simulations** ([Watch Here](https://youtu.be/adVnRqnNrIU)) | Simulations, Extracting p-values (Output) | `04_Monte_Carlo_Simulations.do` |
-| **5. The Copy-Paste Intervention** (Video Coming Soon) | Exporting Results to Word/Excel/LaTeX | `05_Copy_Paste_Intervention.do` |
+| **5. The Copy-Paste Intervention** ([Watch Here](https://youtu.be/eIsr3UC8rok)) | Exporting Results to Word/Excel/LaTeX | `05_Copy_Paste_Intervention.do` |
+
 ---
 
 ## 🚀 Quick Start

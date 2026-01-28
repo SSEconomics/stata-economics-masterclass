@@ -1,13 +1,11 @@
 // -----------------------------    
 // Stata Masterclass: Video 5
-// Topic: The Output Factory - Automating Tables to LaTeX & Excel/Word
+// Topic: Automating Tables to LaTeX & Excel/Word
 // -----------------------------    
 // Author: Stephen Snudden, PhD
-// -----------------------------    
-// YouTube: https://youtube.com/@ssnudden
 // Website: https://stephensnudden.com/
+// YouTube: https://youtube.com/@ssnudden
 // GitHub:  https://github.com/SSEconomics/stata-economics-masterclass
-// -----------------------------    
 
 // -----------------------------    
 // 1. SETUP
@@ -19,12 +17,10 @@ set linesize 255
 set more off         
 
 // The USER WRITTEN 'estout' package is the industry standard.
-// esttab = convenient defaults, fast tables
-// estout = deeper control (paneling, multirow headers, etc.)
 capture ssc install estout
 which estout
 
-// Import Data (Using the clean quarterly data from Video 3)
+// Import Data (Using the clean quarterly data from Video 1)
 import delimited "CDataQ.csv", clear
 local yy=year[1]
 local qq=q[1]
@@ -68,7 +64,7 @@ esttab using "Table1a_Summary.rtf", replace ///
     title("Table 1a: Descriptive Statistics")
 	
 // -----------------------------    
-// PART 3: Summary Statistics (The Matrix Method)
+// PART 3: The Hybrid Method (putexcel)
 // -----------------------------    
 
 // Many "post" style commands expect bare variable names (not L./F. expressions).
@@ -76,8 +72,9 @@ esttab using "Table1a_Summary.rtf", replace ///
 
 // Option 1) brute force the print
 // Correlation matrix
-quietly correlate L.dc dc F.dc dy
+pwcorr L.dc dc F.dc dy, star(.05)
 matrix C = r(C)
+
 // Write matrix with row/col names
 putexcel set "Table2_corr_raw.xlsx", sheet("Corr") replace
 putexcel A1 = matrix(C), names
@@ -102,7 +99,7 @@ foreach v in dy dc {
 }
 
 // -----------------------------    
-// PART 4: REGRESSION RESULTS (Table 2)
+// PART 4: REGRESSION RESULTS (Table 3)
 // -----------------------------    
 eststo clear 
 
@@ -114,7 +111,7 @@ eststo AR4: regress dy L(1/4).dy, vce(robust)
 esttab, se ar2 star(* 0.10 ** 0.05 *** 0.01) label
 
 // Word export (.rtf opens cleanly in Word)
-esttab using "Table2_Regressions.rtf", replace ///
+esttab using "Table3_Regressions.rtf", replace ///
     se ar2 label ///
     star(* 0.10 ** 0.05 *** 0.01) ///
     title("Table 2: GDP Growth Forecasting Models") ///

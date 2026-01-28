@@ -3,6 +3,7 @@
 // Topic: Importing, Frequency Conversion, and Merging
 // -----------------------------	
 // Author: Stephen Snudden, PhD
+// Website: https://stephensnudden.com/
 // YouTube: https://youtube.com/@ssnudden
 // GitHub:  https://github.com/SSEconomics/stata-economics-masterclass
 // -----------------------------

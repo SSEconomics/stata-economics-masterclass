@@ -3,6 +3,7 @@
 // Topic: Essential Stata Skills
 // -----------------------------    
 // Author: Stephen Snudden, PhD
+// Website: https://stephensnudden.com/
 // YouTube: https://youtube.com/@ssnudden
 // GitHub:  https://github.com/SSEconomics/stata-economics-masterclass
 // -----------------------------    
@@ -53,6 +54,7 @@ tsset time
 isid time
 // Merge the collapsed monthly data into the quarterly file
 merge 1:1 time using "DataM.dta", nogenerate
+tsset time
 
 // ---------------------------------------------------------
 // 2. VARIABLE CREATION (The Time Series Engineer)

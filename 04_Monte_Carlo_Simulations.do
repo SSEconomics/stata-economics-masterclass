@@ -3,9 +3,8 @@
 // Topic: Monte Carlo Simulations & The Spurious Regression Trap
 // -----------------------------    
 // Author: Stephen Snudden, PhD
-// -----------------------------    
+// Website: https://stephensnudden.com/ 
 // YouTube: https://youtube.com/@ssnudden
-// Wesite:  https://stephensnudden.com/
 // GitHub:  https://github.com/SSEconomics/stata-economics-masterclass
 // -----------------------------    
 
